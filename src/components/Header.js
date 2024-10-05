@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { togglebtn } from "../utils/HmaburgSlice.js";
 import { Link } from "react-router-dom";
-import { addSearchResultHomeVideos , goHome } from "../utils/HomeVideoSlice.js";
+import { addSearchResultHomeVideos, goHome } from "../utils/HomeVideoSlice.js";
 import { My_Youtube_API_key } from "../utils/constants.js";
 
 const Header = () => {
@@ -17,12 +17,12 @@ const Header = () => {
   const handleToggle = () => dispatch(togglebtn());
   const [inputValue, setinputValue] = useState("");
 
-
   const fetchAPI = async () => {
     const response = await fetch(
       "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=" +
         inputValue +
-        "&type=video&key=" + My_Youtube_API_key
+        "&type=video&key=" +
+        My_Youtube_API_key
     );
     const data = await response.json();
     dispatch(addSearchResultHomeVideos(data.items));
