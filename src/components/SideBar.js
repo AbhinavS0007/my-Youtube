@@ -1,14 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
 import appStore from "../utils/AppStore";
 import { Link } from "react-router-dom";
+import { goHome } from "../utils/HomeVideoSlice";
+// import 
 
 const SideBar = () => {
+
+  const dispatch = useDispatch();
   const YouList = ["History", "Playlist", "Watch Later", "Liked Videos"];
   const ExploreList = [
     "Trending",
     "Shopping",
-    
     "Film",
     "Live",
     "Gaming",
@@ -20,6 +23,10 @@ const SideBar = () => {
   ];
   const SubscriptionsList = ["abhinav"];
 
+  const goHomeFunc = () => {
+    dispatch(goHome());
+  };
+
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   if (!isMenuOpen) return null;
@@ -29,7 +36,8 @@ const SideBar = () => {
         <ul className="">
           <Link to="/">
             {" "}
-            <li className="py-1">Home</li>
+            <li className="py-1" onClick={goHomeFunc}>Home</li>
+
           </Link>
           <li className="py-1">Shorts</li>
           <li className="py-1">Subscriptions</li>

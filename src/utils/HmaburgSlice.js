@@ -13,6 +13,7 @@ const HamburgSlice = createSlice({
     fixedbtn : (state) => {
       state.isMenuOpen = false;
     },
+    
   },
 });
 

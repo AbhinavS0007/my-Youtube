@@ -1,33 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import HomeVideoCards from "./HomeVideoCards";
-import { YOUTUBE_VIDEOS_API } from "../utils/constants.js";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import useHomeVideos from "../Hooks/useHomeVideos.js";
 
 const HomeVideoCon = () => {
-  const [HomeVideos, setHomeVideos] = useState([]);
+  const HomeVideos = useSelector((store) => store.videos?.HomeVideos);
+  const SearchResult = useSelector((store) => store.videos?.SearchResultVideos);
+  // console.log(SearchResult[]);
+  if (SearchResult) {
+    // console.log(SearchResult[0]);
+  }
 
-  const fetchHomeVideos = async () => {
-    const response = await fetch(YOUTUBE_VIDEOS_API);
-    const data = await response.json();
-    // console.log(data);
-    
-    setHomeVideos(data.items);
-  };
-  useEffect(() => {
-    fetchHomeVideos();
-  }, []);
+  useHomeVideos();
 
-  if (HomeVideos.length < 1) return;
-  <div className="justify-center my-8 mx-8 z-55">Loading.....</div>;
-  
+  if (!HomeVideos) return;
+  <div className="justify-center  my-8 mx-8 z-55">Loading.....</div>;
 
   return (
     <div className="flex flex-wrap h-screen  overflow-scroll">
-      {HomeVideos.map((videomap) => (
-        <Link key={videomap.id} to={"/watch?v=" + videomap.id} >
-          <HomeVideoCards video={videomap} />
-        </Link>
-      ))}
+      {!SearchResult &&
+        HomeVideos.map((videomap) => (
+          <Link key={videomap.id} to={"/watch?v=" + videomap.id}>
+            <HomeVideoCards video={videomap} />
+          </Link>
+        ))}
+      {SearchResult &&
+        SearchResult.map((videomap) => (
+          <Link key={videomap.id} to={"/watch?v=" + videomap.id.videoId}>
+            <HomeVideoCards video={videomap} />
+          </Link>
+        ))}
+      {/* https://www.youtube.com/results?search_query=code+with+herry */}
     </div>
   );
 };
