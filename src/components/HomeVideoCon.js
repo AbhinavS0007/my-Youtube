@@ -31,7 +31,6 @@ const HomeVideoCon = () => {
             <HomeVideoCards video={videomap} />
           </Link>
         ))}
-      {/* https://www.youtube.com/results?search_query=code+with+herry */}
     </div>
   );
 };

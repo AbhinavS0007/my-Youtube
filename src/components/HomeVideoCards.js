@@ -1,7 +1,7 @@
 import React from "react";
 
 const HomeVideoCards = ({video}) => {
-  console.log(video);
+  // console.log(video);
 
   // return; 
   return (
