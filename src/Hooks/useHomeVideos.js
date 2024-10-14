@@ -6,8 +6,9 @@ import { My_Youtube_API_key, YOUTUBE_VIDEOS_API } from "../utils/constants";
 const useHomeVideos = () => {
   const dispatch = useDispatch();
   const fetchHomeVideos = async () => {
-    const response = await fetch(YOUTUBE_VIDEOS_API + My_Youtube_API_key);
+    const response = await fetch(YOUTUBE_VIDEOS_API +My_Youtube_API_key);
     const data = await response.json();
+    // console.log(data);
     dispatch(addHomeVideos(data.items));
   };
   useEffect(() => {

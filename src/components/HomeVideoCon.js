@@ -14,8 +14,8 @@ const HomeVideoCon = () => {
 
   useHomeVideos();
 
-  if (!HomeVideos) return;
-  <div className="justify-center  my-8 mx-8 z-55">Loading.....</div>;
+  if (!HomeVideos)
+    return <div className="justify-center  my-8 mx-8 z-55">Loading.....</div>;
 
   return (
     <div className="flex flex-wrap h-screen  overflow-scroll">

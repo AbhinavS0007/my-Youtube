@@ -17,8 +17,8 @@ const ChannelVideoDetails = ({vid}) => {
       }, []);
 
   return (
-    <div>
-      <h1 className="font-bold my-3 text-2xl">
+    <div className=''>
+      <h1 className="font-bold my-1 text-2xl ">
         {videoDetail.title}
         </h1>
         <div className="flex">
