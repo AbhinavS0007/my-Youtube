@@ -10,14 +10,11 @@ const Buttons = () => {
     
   ];
   ButtonList.push("Kapil Sharma")
-  
-
-
   // console.log(ButtonList[0]);
   return (
-    <div className="flex font-bold my-3">
+    <div className="flex font-bold   ">
       {ButtonList.map((button) => (
-        <button key={button} className="border px-5 py-1 m-3 rounded-xl">{button}</button>
+        <button key={button} className="border w-auto px-5  mx-3 rounded-xl">{button}</button>
       ))}
     </div>
   );
