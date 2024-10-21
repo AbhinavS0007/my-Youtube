@@ -17,7 +17,7 @@ const ChannelVideoDetails = ({vid}) => {
       }, []);
 
   return (
-    <div className=''>
+    <div className='w-[960px]'>
       <h1 className="font-bold my-1 text-2xl ">
         {videoDetail.title}
         </h1>
