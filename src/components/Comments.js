@@ -5,7 +5,7 @@ const Comments = ({comments}) => {
     const userIcon = comments.authorThumbnail[0].url ?  `${comments.authorThumbnail[0].url}` : "https://cdn-icons-png.flaticon.com/512/1144/1144760.png";
     
   return (
-    <div className="flex justify-between my-5">
+    <div className="flex justify-between my-5 ">
       <div className="flex">
         <div className=" justify-center">
           <img

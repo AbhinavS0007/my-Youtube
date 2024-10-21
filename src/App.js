@@ -7,32 +7,29 @@ import WatchConPage from "./components/WatchConPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainVideoCon from "./components/MainVideoCon";
 
-
-
 function App() {
   const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Body/>,
+      element: <Body />,
       children: [
         {
-          path:"/",
+          path: "/",
           element: <MainVideoCon />,
         },
         {
-          path:"/watch",
+          path: "/watch",
           element: <WatchConPage />,
         },
-      ]
-    }
-  ])
+      ],
+    },
+  ]);
   return (
     <Provider store={appStore}>
       <div className="">
         <Header />
-        
-        <RouterProvider router = {appRouter} />
 
+        <RouterProvider router={appRouter} />
       </div>
     </Provider>
   );

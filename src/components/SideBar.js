@@ -31,7 +31,7 @@ const SideBar = () => {
 
   if (!isMenuOpen) return null;
   return (
-    <div className=" w-1/6 border h-screen overflow-scroll justify-center z-55 bg-white absolute ">
+    <div className=" w-1/6 border h-screen overflow-scroll justify-center z-55 bg-white  ">
       <div className="p-6">
         <ul className="">
           <Link to="/">

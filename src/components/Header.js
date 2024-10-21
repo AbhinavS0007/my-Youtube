@@ -48,12 +48,12 @@ const Header = () => {
           alt="Button"
         ></img>
 
-        <img
+        <a href="/"><img
           className="h-14 mx-4 -my-3 cursor-pointer"
           src={YoutubeLogo}
           alt="Youtube"
           onClick={goHomeFunc}
-        />
+        /></a>
       </div>
       <div className="flex col-span-10  justify-center">
         <input

@@ -19,7 +19,7 @@ const CommentPage = ({ Vid }) => {
   }, []);
   if (!comments) return;
   return (
-    <div className="my-5">
+    <div className="my-5 w-[970px]">
       <div className="flex">
         <h1 className="font-bold text-2xl">
           {comments.commentsCount} Comments
@@ -34,7 +34,7 @@ const CommentPage = ({ Vid }) => {
             <Comments key={index} comments={val} />
           ))
         ) : (
-          <p>No comments yet.</p> // Optional message if no comments
+          <p>No comments yet.</p> 
         )}
       </div>
     </div>

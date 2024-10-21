@@ -12,12 +12,12 @@ import ChitChatCard from "./ChitChatCard";
 import { Video_details_by_ID_options } from "../utils/ApiFetch";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessages } from "../utils/chatSlice";
+import Buttons from "./Buttons";
+import SuggestedVideos from "./SuggestedVideos";
 
 const LiveChitChat = ({ vid }) => {
-  const [liveMessages, setliveMessages] = useState("");
+  // const [liveMessages, setliveMessages] = useState("");
   const dispatch = useDispatch();
-  // console.log(vid);
-  const vid1 = "FNCp6IQb0gU";
   const [isLiveContent, setisLiveContent] = useState(true);
 
   const livechattesting = async () => {
@@ -25,22 +25,21 @@ const LiveChitChat = ({ vid }) => {
       `https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails,snippet&id=${vid}&key=${My_Youtube_API_key}`
     );
     const data = await response.json();
-// console.log(data.items[0].snippet.liveBroadcastContent);
 
-if (data.items[0].snippet.liveBroadcastContent !== "live" || data.items[0].snippet.liveBroadcastContent === "none") {
-  setisLiveContent(false);
-  return null;
-}
+    if (
+      data.items[0].snippet.liveBroadcastContent !== "live" ||
+      data.items[0].snippet.liveBroadcastContent === "none"
+    ) {
+      setisLiveContent(false);
+      return null;
+    }
     const activeLiveChatId =
       data.items[0].liveStreamingDetails.activeLiveChatId;
-    
-    // if(!activeLiveChatId)return;
-
     const Live_Chat_Events = await fetch(
       `https://www.googleapis.com/youtube/v3/liveChat/messages?liveChatId=${activeLiveChatId}&part=snippet,authorDetails&maxResults=2000&key=${My_Youtube_API_key}`
     );
     const data2 = await Live_Chat_Events.json();
-    setliveMessages(data2.items);
+    // setliveMessages(data2.items);
     dispatch(addMessages(data2.items));
   };
 
@@ -54,13 +53,10 @@ if (data.items[0].snippet.liveBroadcastContent !== "live" || data.items[0].snipp
     };
   }, []);
 
-  // const messages =  useSelector((store)=>store.liveChat.messages)
-  // console.log(messages);
-
   return (
     <>
       {isLiveContent && (
-        <div className="m-5">
+        <div className="m-3">
           <div className="h-16 border flex justify-between ">
             <button className="flex p-4 ">
               <h1>Top chat</h1>
@@ -89,6 +85,15 @@ if (data.items[0].snippet.liveBroadcastContent !== "live" || data.items[0].snipp
           </div>
         </div>
       )}
+
+      <div className="h-full w-[400px]  ">
+        <div className="overflow-x-scroll border-black">
+          <Buttons />
+        </div>
+        <div className="grid ">
+          <SuggestedVideos vidid={vid}/>
+        </div>
+      </div>
     </>
   );
 };
